@@ -42,21 +42,20 @@ jobs:
         run: |
           mkdir -p dist
           if [ ! -f dist/index.html ]; then
-            cat <<'EOF' > dist/index.html
-            <!doctype html>
-            <html lang="en">
-              <head>
-                <meta charset="utf-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <title>Recipe API</title>
-              </head>
-              <body>
-                <h1>Recipe API Build Deployed</h1>
-                <p>This repository is currently configured as a Node/Express API.</p>
-                <p>GitHub Pages only serves static files, so this page confirms CI/CD deployment.</p>
-              </body>
-            </html>
-            EOF
+            printf '%s\n' \
+              '<!doctype html>' \
+              '<html lang="en">' \
+              '  <head>' \
+              '    <meta charset="utf-8" />' \
+              '    <meta name="viewport" content="width=device-width, initial-scale=1" />' \
+              '    <title>Recipe API</title>' \
+              '  </head>' \
+              '  <body>' \
+              '    <h1>Recipe API Build Deployed</h1>' \
+              '    <p>This repository is currently configured as a Node/Express API.</p>' \
+              '    <p>GitHub Pages only serves static files, so this page confirms CI/CD deployment.</p>' \
+              '  </body>' \
+              '</html>' > dist/index.html
           fi
 
       - name: Setup Pages
